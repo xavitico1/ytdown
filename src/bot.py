@@ -20,7 +20,21 @@ def download_video(update: Update, context: CallbackContext) -> None:
         update.message.reply_text('Please provide a YouTube video URL.')
 
 def main() -> None:
-    updater = Updater(config.BOT_TOKEN)
+    # Make the Updater compatible with both old and new python-telegram-bot versions
+    import telegram
+    updater_kwargs = {}
+    if hasattr(telegram, "__version__"):
+        # Get major version
+        major_version = int(telegram.__version__.split(".")[0])
+        if major_version < 12:
+            # For old versions, Updater needs an update_queue argument
+            from queue import Queue
+            updater = Updater(config.BOT_TOKEN, Queue())
+        else:
+            updater = Updater(config.BOT_TOKEN)
+    else:
+        # Safe fallback
+        updater = Updater(config.BOT_TOKEN)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
