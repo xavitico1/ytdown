@@ -1,3 +1,3 @@
-bot_token = "YOUR_TELEGRAM_BOT_TOKEN"
-youtube_api_key = "YOUR_YOUTUBE_API_KEY"
+bot_token = "7656468639:AAFZLaXapxnejcnsWnMlfK_m4zPQSvCvUKo"
+youtube_api_key = "AIzaSyAi3A8L4eYmxFrl6rwTAJxbBV1nlhOMDj0"
 download_directory = "downloads"
